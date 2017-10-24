@@ -3,7 +3,7 @@ require("./TtwElectron-REQUIRES.js");global.win;global.REQUIRE.electron.app.on("
 //height: 600,//Integer - Window's height in pixels. Default is `600`.
 //x: undefined,//Integer - Window's left offset from screen. Default is to center the window.
 //y: undefined,//Integer - Window's top offset from screen. Default is to center the window.
-useContentSize: false,//Boolean - The `width` and `height` would be used as web page's size, which means the actual window's size will include window frame's size and be slightly larger. Default is `false`.
+useContentSize: true,//Boolean - The `width` and `height` would be used as web page's size, which means the actual window's size will include window frame's size and be slightly larger. Default is `false`.
 //Boolean - Show window in the center of the screen.
 center: undefined,
 minWidth: 0,//Integer - Window's minimum width. Default is `0`.
@@ -13,8 +13,8 @@ maxHeight: undefined,//Integer - Window's maximum height. Default is no limit.
 resizable: true,//Boolean - Whether window is resizable. Default is `true`.
 alwaysOnTop: false,//Boolean - Whether the window should always stay on top of other windows. Default is `false`.
 fullscreen: false,//Boolean - Whether the window should show in fullscreen. When set to `false` the fullscreen button will be hidden or disabled on OS X. Default is `false`.
-skipTaskbar: false,//Boolean - Whether to show the window in taskbar. Default is `false`.
-kiosk: false,//Boolean - The kiosk mode. Default is `false`.
+skipTaskbar: true,//Boolean - Whether to show the window in taskbar. Default is `false`.
+kiosk: true,//Boolean - The kiosk mode. Default is `false`.
 title: "TtwElectron",//String - Default window title. Default is `'Electron'`.
 icon: "icon/icon.ico",//[NativeImage](https://github.com/atom/electron/blob/master/docs/api/native-image.md) - The window icon, when omitted on Windows the executable's icon would be used as window icon.
 show: true,//Boolean - Whether window should be shown when created. Default is `true`.

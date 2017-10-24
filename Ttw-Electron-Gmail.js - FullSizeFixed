@@ -1,16 +1,16 @@
-console.log(1);global.REQUIRE={};global.REQUIRE.electron=require("electron");global.REQUIRE.path=require("path");global.REQUIRE.url=require("url");global.win;global.REQUIRE.electron.app.on("ready",createWindow);global.REQUIRE.electron.app.on("window-all-closed",function(e){if(process.platform !== "darwin") global.REQUIRE.electron.app.quit();});global.REQUIRE.electron.app.on("activate",function(e){if(win === null) createWindow();});function createWindow(){global.win=new global.REQUIRE.electron.BrowserWindow({
+require("./TtwElectron-REQUIRES.js");global.win;global.REQUIRE.electron.app.on("ready",createWindow);global.REQUIRE.electron.app.on("window-all-closed",function(e){if(process.platform !== "darwin") global.REQUIRE.electron.app.quit();});global.REQUIRE.electron.app.on("activate",function(e){if(win === null) createWindow();});function createWindow(){global.win=new global.REQUIRE.electron.BrowserWindow({
 //width: 800,//Integer - Window's width in pixels. Default is `800`.
 //height: 600,//Integer - Window's height in pixels. Default is `600`.
 //x: undefined,//Integer - Window's left offset from screen. Default is to center the window.
 //y: undefined,//Integer - Window's top offset from screen. Default is to center the window.
-useContentSize: false,//Boolean - The `width` and `height` would be used as web page's size, which means the actual window's size will include window frame's size and be slightly larger. Default is `false`.
+useContentSize: true,//Boolean - The `width` and `height` would be used as web page's size, which means the actual window's size will include window frame's size and be slightly larger. Default is `false`.
 //Boolean - Show window in the center of the screen.
 center: undefined,
 minWidth: 0,//Integer - Window's minimum width. Default is `0`.
 minHeight: 0,//Integer - Window's minimum height. Default is `0`.
 maxWidth: undefined,//Integer - Window's maximum width. Default is no limit.
 maxHeight: undefined,//Integer - Window's maximum height. Default is no limit.
-resizable: false,//Boolean - Whether window is resizable. Default is `true`.
+resizable: true,//Boolean - Whether window is resizable. Default is `true`.
 alwaysOnTop: false,//Boolean - Whether the window should always stay on top of other windows. Default is `false`.
 fullscreen: false,//Boolean - Whether the window should show in fullscreen. When set to `false` the fullscreen button will be hidden or disabled on OS X. Default is `false`.
 skipTaskbar: true,//Boolean - Whether to show the window in taskbar. Default is `false`.
@@ -59,11 +59,35 @@ webPreferences: {
 	sharedWorker: false,//Boolean - Enables Shared Worker support. Default is `false`.
 	directWrite: true,//Boolean - Enables DirectWrite font rendering system on Windows. Default is `true`.
 	pageVisibility: false//Boolean - Page would be forced to be always in visible or hidden state once set, instead of reflecting current window's visibility. Users can set it to `true` to prevent throttling of DOM timers. Default is `false`.
-}
-});
+}});global.win.webContents.openDevTools();
+
+//----------------------------------------------------------------------------------------------------;
+
+//	EVENT;
+
+//----------------------------------------------------------------------------------------------------;
+
+/**
+ * global.win.loadURL의 사이트의 HTMLElements 구성이 완료된후 호출되는 함수
+ * @function
+ */
+global.win.webContents.onloadend = function( d )
+{
+	console.log( "----[ S ] - global.win.webContents.onloadend():void----------" );
+
+	global.win.webContents.initialize();
+
+	console.log( "----[ E ] - global.win.webContents.onloadend():void----------" );
+};
+
+//----------------------------------------------------------------------------------------------------;
+
+//	LOGIC;
+
+//----------------------------------------------------------------------------------------------------;
+
 global.win.loadURL( "http://gmail.com" );
-global.win.webContents.openDevTools();
-global.win.webContents.l();
-//setTimeout( global.win.webContents.l, 10000 );
-//*/
+
+//----------------------------------------------------------------------------------------------------;
+
 };
