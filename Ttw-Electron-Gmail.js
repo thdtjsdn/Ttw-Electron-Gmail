@@ -1,4 +1,4 @@
-require("./TtwElectron-REQUIRES.js");global.win;global.REQUIRE.electron.app.on("ready",createWindow);global.REQUIRE.electron.app.on("window-all-closed",function(e){if(process.platform !== "darwin") global.REQUIRE.electron.app.quit();});global.REQUIRE.electron.app.on("activate",function(e){if(win === null) createWindow();});function createWindow(){global.win=new global.REQUIRE.electron.BrowserWindow({
+require("./TtwElectron-REQUIRES.js");global.win;global.REQUIRES.electron.app.on("ready",createWindow);global.REQUIRES.electron.app.on("window-all-closed",function(e){if(process.platform !== "darwin") global.REQUIRES.electron.app.quit();});global.REQUIRES.electron.app.on("activate",function(e){if(win === null) createWindow();});function createWindow(){global.win=new global.REQUIRES.electron.BrowserWindow({
 //width: 800,//Integer - Window's width in pixels. Default is `800`.
 //height: 600,//Integer - Window's height in pixels. Default is `600`.
 //x: undefined,//Integer - Window's left offset from screen. Default is to center the window.
@@ -14,7 +14,7 @@ resizable: true,//Boolean - Whether window is resizable. Default is `true`.
 alwaysOnTop: false,//Boolean - Whether the window should always stay on top of other windows. Default is `false`.
 fullscreen: false,//Boolean - Whether the window should show in fullscreen. When set to `false` the fullscreen button will be hidden or disabled on OS X. Default is `false`.
 skipTaskbar: true,//Boolean - Whether to show the window in taskbar. Default is `false`.
-kiosk: true,//Boolean - The kiosk mode. Default is `false`.
+kiosk: false,//Boolean - The kiosk mode. Default is `false`.
 title: "TtwElectron",//String - Default window title. Default is `'Electron'`.
 icon: "icon/icon.ico",//[NativeImage](https://github.com/atom/electron/blob/master/docs/api/native-image.md) - The window icon, when omitted on Windows the executable's icon would be used as window icon.
 show: true,//Boolean - Whether window should be shown when created. Default is `true`.
@@ -76,6 +76,8 @@ global.win.webContents.onloadend = function( d )
 	console.log( "----[ S ] - global.win.webContents.onloadend():void----------" );
 
 	global.win.webContents.initialize();
+
+	setTimeout( function(){ global.win.webContents.executeJavaScript( SUtilFsReadStream.getFile( "./__Backup/CrackSource/change_gmail_size.js" ).toString( "utf8" ) ); }, 4000 );
 
 	console.log( "----[ E ] - global.win.webContents.onloadend():void----------" );
 };
