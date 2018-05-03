@@ -13,7 +13,7 @@ maxHeight: undefined,//Integer - Window's maximum height. Default is no limit.
 resizable: true,//Boolean - Whether window is resizable. Default is `true`.
 alwaysOnTop: false,//Boolean - Whether the window should always stay on top of other windows. Default is `false`.
 fullscreen: false,//Boolean - Whether the window should show in fullscreen. When set to `false` the fullscreen button will be hidden or disabled on OS X. Default is `false`.
-skipTaskbar: true,//Boolean - Whether to show the window in taskbar. Default is `false`.
+skipTaskbar: false,//Boolean - Whether to show the window in taskbar. Default is `false`.
 kiosk: true,//Boolean - The kiosk mode. Default is `false`.
 title: "TtwElectron",//String - Default window title. Default is `'Electron'`.
 icon: "icon/icon.ico",//[NativeImage](https://github.com/atom/electron/blob/master/docs/api/native-image.md) - The window icon, when omitted on Windows the executable's icon would be used as window icon.
