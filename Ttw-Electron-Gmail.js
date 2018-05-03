@@ -14,7 +14,7 @@ resizable: true,//Boolean - Whether window is resizable. Default is `true`.
 alwaysOnTop: false,//Boolean - Whether the window should always stay on top of other windows. Default is `false`.
 fullscreen: false,//Boolean - Whether the window should show in fullscreen. When set to `false` the fullscreen button will be hidden or disabled on OS X. Default is `false`.
 skipTaskbar: false,//Boolean - Whether to show the window in taskbar. Default is `false`.
-kiosk: true,//Boolean - The kiosk mode. Default is `false`.
+kiosk: false,//Boolean - The kiosk mode. Default is `false`.
 title: "TtwElectron",//String - Default window title. Default is `'Electron'`.
 icon: "icon/icon.ico",//[NativeImage](https://github.com/atom/electron/blob/master/docs/api/native-image.md) - The window icon, when omitted on Windows the executable's icon would be used as window icon.
 show: true,//Boolean - Whether window should be shown when created. Default is `true`.
@@ -59,7 +59,8 @@ webPreferences: {
 	sharedWorker: false,//Boolean - Enables Shared Worker support. Default is `false`.
 	directWrite: true,//Boolean - Enables DirectWrite font rendering system on Windows. Default is `true`.
 	pageVisibility: false//Boolean - Page would be forced to be always in visible or hidden state once set, instead of reflecting current window's visibility. Users can set it to `true` to prevent throttling of DOM timers. Default is `false`.
-}});global.win.webContents.openDevTools();
+}});
+//global.win.webContents.openDevTools();
 
 //----------------------------------------------------------------------------------------------------;
 
@@ -75,17 +76,9 @@ global.win.webContents.onloadend = function( d )
 {
 	console.log( "----[ S ] - global.win.webContents.onloadend():void----------" );
 
-	debugger;
-
 	global.win.webContents.initialize();
 
-	var strJS = `
-		var t = window.document.body.children[ 14 ].children[ 2 ].children[ 0 ].children[ 1 ].children[ 0 ];
-			t.children[ 0 ].style.width = "400px";
-			t.children[ 1 ].style.width = "1520px";
-	`;
-
-	setTimeout( function(){ global.win.webContents.executeJavaScript( strJS ); }, 4000 );
+	setTimeout( function(){ global.win.webContents.executeJavaScript( SUtilFsReadStream.getFile( "./__Backup/CrackSource/change_gmail_size.js" ).toString( "utf8" ) ); }, 4000 );
 
 	console.log( "----[ E ] - global.win.webContents.onloadend():void----------" );
 };
